@@ -3,27 +3,10 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    console.log('constructor');
-  }
 
-  componentWillMount() {
-    console.log('will mount')
-  }
-
-  componentDidMount() {
-    console.log('mounted')
-  }
-
-  state = {
-    toggle: true
-  }
-
-  toggle = () => {
-    this.setState({
-      toggle: !this.state.toggle
-    })
+  submit = () => {
+    //console.log(this.text.value)
+    console.log(this.email)
   }
 
   render() {
@@ -31,13 +14,12 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <Welcome text="Welcome to Using Props" toggle={this.state.toggle} />
+          <Welcome text="Welcome to Using Props" />
         </header>
-        {/* { inline conditional } */}
-        {this.state.toggle &&
-          <p>This should show and hide</p>
-        }
-        <button onClick={this.toggle}>Show / Hide</button>
+        {/* <input type="text" ref={(input) => this.text = input}></input>
+        <input type="email" ref={(input) => this.email = input}></input> */}
+        <p ref={(input) => this.email = input} >testing refs</p>
+        <button onClick={this.submit}>Show Value</button>
       </div>
     );
   }
@@ -45,7 +27,7 @@ class App extends Component {
 
 class Welcome extends Component {
   render() {
-    const { text, toggle } = this.props;  // get the value of text in props
+    const { text } = this.props;
     return (
       <h1 className="App-title">{text}</h1>
     )
