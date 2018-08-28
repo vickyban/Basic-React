@@ -3,6 +3,15 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+  state = {
+    input: 'Hello'
+  }
+
+  updateInput = (event) => {
+    this.setState({
+      input: event.target.value.trim()  // remove whitespace from the input
+    })
+  }
 
   submit = () => {
     //console.log(this.text.value)
@@ -16,9 +25,9 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <Welcome text="Welcome to Using Props" />
         </header>
-        {/* <input type="text" ref={(input) => this.text = input}></input>
-        <input type="email" ref={(input) => this.email = input}></input> */}
-        <p ref={(input) => this.email = input} >testing refs</p>
+        <h3>{this.state.input}</h3>
+        <input type="text" onChange={this.updateInput} value={this.state.input}></input>
+        <input type="email" ref={(input) => this.email = input}></input>
         <button onClick={this.submit}>Show Value</button>
       </div>
     );
