@@ -6,25 +6,32 @@ import {
   Switch,
   Link,
 } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
 import logo from './logo.svg';
 import './App.css';
 import MovieList from './MovieList';
 import MovieDetail from './MovieDetail';
 
+const hello = () => ('hello');
+const store = createStore(hello);
+
 const App = () => (
-  <Router>
-    <div className="App">
-      <header className="App-header">
-        <Link to="/">
-          <img src={logo} className="App-logo" alt="logo" />
-        </Link>
-      </header>
-      <Switch>
-        <Route exact path="/" component={MovieList} />
-        <Route path="/movie/:id" component={MovieDetail} />
-      </Switch>
-    </div>
-  </Router>
+  <Provider store={store}>
+    <Router>
+      <div className="App">
+        <header className="App-header">
+          <Link to="/">
+            <img src={logo} className="App-logo" alt="logo" />
+          </Link>
+        </header>
+        <Switch>
+          <Route exact path="/" component={MovieList} />
+          <Route path="/movie/:id" component={MovieDetail} />
+        </Switch>
+      </div>
+    </Router>
+  </Provider>
 );
 
 
