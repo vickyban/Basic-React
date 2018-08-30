@@ -8,13 +8,19 @@ import {
 } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import rootReducer from './rootReducer';
+
 import logo from './logo.svg';
 import './App.css';
 import MovieList from './MovieList';
 import MovieDetail from './MovieDetail';
 
-const store = createStore(rootReducer);
+const store = createStore(
+  rootReducer,
+  {}, // initial state
+  composeWithDevTools(), // middleware
+);
 
 const App = () => (
   <Provider store={store}>
