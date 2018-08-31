@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import { toggleMessage } from './actions';
+
 const Toggle = ({ messageVisibility, dispatch }) => (
   <div>
     {messageVisibility
       && <p>You will see This message if redux action is toggled</p>
     }
-    <button onClick={() => dispatch({
-      type: 'TOGGLE_MESSAGE',
-    })}
-    >
+    <button onClick={() => dispatch(toggleMessage())}>
       Toggle Me
     </button>
   </div>
