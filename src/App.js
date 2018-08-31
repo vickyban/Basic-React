@@ -11,7 +11,9 @@ import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import logger from 'redux-logger';
 import thunk from 'redux-thunk';
+import { save, load } from 'redux-localstorage-simple';
 import rootReducer from './rootReducer';
+
 
 import logo from './logo.svg';
 import './App.css';
@@ -23,8 +25,9 @@ const middleware = [logger, thunk];
 
 const store = createStore(
   rootReducer,
-  {}, // initial state
-  composeWithDevTools(applyMiddleware(...middleware)), // middleware
+  // {},  initial state
+  load(), // if inial state exist then load it from local -> redux store
+  composeWithDevTools(applyMiddleware(...middleware, save())), // middleware
 );
 
 const App = () => (
