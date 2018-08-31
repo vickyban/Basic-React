@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { toggleMessage, getMovies } from './actions';
+import { toggleMessage } from './actions';
+import { getMovies } from '../movies/actions';
 
 
 const Toggle = ({ messageVisibility, toggleMessage, getMovies }) => (
@@ -20,7 +21,7 @@ const Toggle = ({ messageVisibility, toggleMessage, getMovies }) => (
 
 // get specific state from redux store
 const mapStateToProps = state => ({
-  messageVisibility: state.message.messageVisibility,
+  messageVisibility: state.toggle.messageVisibility,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
